@@ -180,8 +180,6 @@ class CadastroPerfilAluno extends Component {
 
                     <SACEInput
                         label={'Matricula'}
-                        type="number"
-                        min="0"
                         value={this.state.matricula}
                         placeholder={'Informe a sua matrícula. '}
                         onChange={(e) => this.setState({ matricula: e.target.value })}

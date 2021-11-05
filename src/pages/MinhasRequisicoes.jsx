@@ -52,7 +52,7 @@ class MinhasRequisicoes extends Component {
     })
   }
   async listarDisciplinas() {
-    await get(`cursos/${this.state.idCurso}/disciplinas/`).then((retorno) => {
+    await get(`cursos/${this.state.idCurso}disciplinas/`).then((retorno) => {
       if (retorno) this.setState({ disciplinas: retorno })
     });
   }

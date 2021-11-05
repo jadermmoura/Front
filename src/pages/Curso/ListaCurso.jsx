@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { baseURL } from '../../enviroment';
 import SACEInput from '../../components/inputs/SACEInput';
 import { Button, } from 'react-bootstrap';
 import { Link } from "react-router-dom";
@@ -89,7 +90,7 @@ export default class ListaCursos extends Component {
     }
 
     delete() {
-        axios.delete("http://localhost:8080/api/cursos/" + this.state.id).then((r) =>
+        axios.delete(`${baseURL}/cursos/${this.state.id}`).then((r) =>
             this.setState({ modalShow: false, showAlert: true, variantAlert: "danger", msgAlert: "Apagou com sucesso" })
             + this.listarCursos()
         ).catch(() =>

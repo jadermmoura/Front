@@ -33,7 +33,7 @@ class RelatorioCertificacao extends Component {
   
   async listarDisciplinas() {
     console.log(this.state.idCurso);
-    await get(`cursos/${this.state.idCurso}/disciplinas/`).then((retorno) => {
+    await get(`cursos/${this.state.idCurso}disciplinas/`).then((retorno) => {
       console.log(retorno);
       if (retorno) this.setState({ disciplinas: retorno })
     });

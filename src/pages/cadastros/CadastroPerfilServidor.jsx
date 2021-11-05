@@ -141,11 +141,9 @@ class CadastroPerfilServidor extends Component {
                     onErrorMessage={this.state.msgNome}
                 />
                 <SACEInput
-                    type={"number"}
-                    min="0"
                     label={'SIAPE'}
                     value={this.state.siape}
-                    placeholder={'Informe a sua siape. '}
+                    placeholder={'Informe o seu siape. '}
                     onChange={(e) => this.setState({ siape: e.target.value })}
                     onError={this.state.siapeInvalido}
                     onErrorMessage={this.state.msgSiape}

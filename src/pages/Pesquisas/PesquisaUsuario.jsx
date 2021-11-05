@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Alert,Table } from 'react-bootstrap';
 import { get } from '../../services/ServicoCrud';
-import SACEInput from '../../../src//components/inputs/SACEInput';
+import SACEInput from '../../../src/components/inputs/SACEInput';
 import { format } from '../../auxiliares/FormataData';
 
 class PesquisaUsuario extends Component {
@@ -87,7 +87,7 @@ class PesquisaUsuario extends Component {
             {this.state.escolha === "matricula" && <>
                 <br /><br />
                 <label>Digite o número da matrícula : </label>&nbsp;&nbsp;&nbsp;
-                <input type={"number"} value={this.state.matricula}onChange={(e) => {
+                <input value={this.state.matricula}onChange={(e) => {
                     this.setState({ matricula: e.target.value })
                 }}></input>
                 <Form.Text className="text-danger">{this.state.msgMatricula} </Form.Text>
@@ -123,7 +123,7 @@ class PesquisaUsuario extends Component {
             {this.state.escolha === "siape" && <>
                 <br /><br />
                 <label>Digite o número da SIAPE : </label>&nbsp;&nbsp;&nbsp;
-                <input type={"number"} value={this.state.siape}onChange={(e) => {
+                <input value={this.state.siape}onChange={(e) => {
                     this.setState({ siape: e.target.value })
                 }}></input>
                 <Form.Text className="text-danger">{this.state.msgSiape} </Form.Text>

@@ -26,7 +26,7 @@ class CadastrarDisciplinas extends Component {
     }
 
     async  listarDisciplinas() {
-        await get(`cursos/${this.state.idcurso}/disciplinas/`).then((retorno) => {
+        await get(`cursos/${this.state.idcurso}disciplinas/`).then((retorno) => {
             this.setState({ disciplinas: retorno })
         });
     }
@@ -58,7 +58,7 @@ class CadastrarDisciplinas extends Component {
 
     }
     async apagar(e) {
-        await delDisciplinaCurso(`cursos/${this.state.idcurso}/disciplinas/${e}`).then(() => {
+        await delDisciplinaCurso(`cursos/${this.state.idcurso}disciplinas/${e}`).then(() => {
             this.listarDisciplinas()
         })
     }

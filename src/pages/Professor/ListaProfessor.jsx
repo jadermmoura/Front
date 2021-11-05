@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { baseURL } from '../../enviroment';
 import { get, getId, put } from '../../services/ServicoCrud';
 import SACEInput from '../../components/inputs/SACEInput';
 import { Button, Form, Modal, Alert } from 'react-bootstrap'
@@ -59,7 +60,7 @@ class ListaProfessor extends Component {
         })
     }
     async deletarCoordenadorCurso(e) {
-        axios.delete("http://localhost:8080/api/usuarios/coordenador/" + e)
+        axios.delete(`${baseURL}/usuarios/coordenador/` + e)
     }
 
     async editar(e) {
@@ -103,7 +104,7 @@ class ListaProfessor extends Component {
             })
     }
     deletar() {
-        axios.delete("http://localhost:8080/api/usuarios/" + this.state.id).then((r) =>
+        axios.delete(`${baseURL}/usuarios/` + this.state.id).then((r) =>
             this.setState({ modalShow: false, show: true, variant: "danger", msgAlert: "Apagou com sucesso" }),
             this.listaProfessor()
         ).catch(() =>
@@ -193,11 +194,9 @@ class ListaProfessor extends Component {
                     onErrorMessage={this.state.msgNome}
                 />
                 <SACEInput
-                    type={"number"}
-                    min="0"
                     label={'SIAPE'}
                     value={this.state.siape}
-                    placeholder={'Informe a sua siape. '}
+                    placeholder={'Informe o seu siape. '}
                     onChange={(e) => this.setState({ siape: e.target.value })}
                     onError={this.state.siapeInvalido}
                     onErrorMessage={this.state.msgSiape}

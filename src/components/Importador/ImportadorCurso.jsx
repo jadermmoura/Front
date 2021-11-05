@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { baseURL } from '../../enviroment';
 import { Alert } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -16,7 +17,7 @@ class ImportarCurso extends Component {
         const config = { headers: { 'Content-Type': 'multipart/form-data' } };
         const form = new FormData();
         form.append("umArquivo",this.state.umArquivo);
-        axios.post("http://localhost:8080/api/anexos/cursos",form,config).then(()=>{
+        axios.post(`${baseURL}/anexos/cursos`,form,config).then(()=>{
             this.setState({showAlert:true})
         })
         setTimeout(() => {

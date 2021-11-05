@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { baseURL } from '../enviroment';
 import { get, getId } from './../services/ServicoCrud'
 import { Button, Modal, Alert } from 'react-bootstrap'
 import { putAluno } from '../services/AlunoService';
@@ -189,8 +190,6 @@ class ListaAlunos extends Component {
                     />
                     <SACEInput
                         label={'Matrícula'}
-                        type="number"
-                        min="0"
                         value={this.state.matricula}
                         placeholder={'Informe a sua matrícula. '}
                         onChange={(e) => this.setState({ matricula: e.target.value })}
@@ -225,7 +224,7 @@ class ListaAlunos extends Component {
                     <Modal.Footer>
                         <Button variant="primary"
                             className="btn btn-danger m-1"
-                            onClick={(e) => axios.delete("http://localhost:8080/api/usuarios/" + this.state.id).then((r) =>
+                            onClick={(e) => axios.delete(`${baseURL}/usuarios/` + this.state.id).then((r) =>
                                 this.setState({ modalShow: false, showAlert: true, variantAlert: "danger", msgAlert: "Apagou com sucesso" }, this.listarAlunos())
                             ).catch(() =>
                                 alert("Não pode apagar cadastro do aluno devido ele ter requisição no sistema"),

@@ -5,9 +5,6 @@ import React, { useState, useEffect } from 'react';
 import { get } from '../services/ServicoCrud'
 
 
-
-
-
 function SACELink({ to, label }) {
     return (
         <NavLink
@@ -36,7 +33,6 @@ function retornaLinks(user) {
         return <>
             <SACELink to={'/nova-requisicao'} label={'Criar requisição'} />
             <SACELink to={`/aluno-requisicoes/`} label={'Requisições'} />
-            <SACELink to={'/troca-senha'} label={'Alterar senha'} />
             <SACELink to={'/dados-aluno'} label={'Informações pessoais'} />
         </>
     } else if (user.permissao === "SERVIDOR") {
@@ -45,7 +41,8 @@ function retornaLinks(user) {
 
             <DropdownButton id="dropdown-basic-button" title="CADASTRAR" >
                 <Dropdown.Item><Link to="/cadastrar-curso">Curso</Link></Dropdown.Item>
-                <Dropdown.Item ><Link to="/cadastro-servidor">Servidor / Professor</Link></Dropdown.Item>
+                <Dropdown.Item ><Link to="/cadastro-servidor">Servidor</Link></Dropdown.Item>
+                <Dropdown.Item ><Link to="/cadastro-professor">Professor</Link></Dropdown.Item>
                 <Dropdown.Item ><Link to="/cadastrar-disciplina">Disciplina</Link></Dropdown.Item>
             </DropdownButton>
             <DropdownButton id="dropdown-basic-button" title="LISTAR" style={{}}>
@@ -77,7 +74,6 @@ function retornaLinks(user) {
         return <>
 
             <SACELink to={'/minhas-requisicoes'} label={'Requisições do Professor'} />
-            <SACELink to={'/troca-senha'} label={'Alterar senha'} />
         </>
     }
 }

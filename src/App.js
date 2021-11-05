@@ -12,6 +12,7 @@ import LoginForm from './components/forms/LoginForm'
 import ListaDiscipinas from './Cursos/ListaDisciplina';
 import CadastrarDisciplinas from './Cursos/CadastrarDisciplinas';
 import CadastroPerfilServidor from './pages/cadastros/CadastroPerfilServidor';
+import CadastroPerfilProfessor from './pages/cadastros/CadastroPerfilProfessor';
 import ConfiguraDataSolicitacoes from './pages/ConfiguracaoSistema/ConfiguraDataSolicitacoes';
 import ListaAlunos from '../src/Cursos/ListaAlunos';
 import Parecer from '../src/components/inputs/Parecer';
@@ -30,16 +31,19 @@ import './components/card.css';
 import ImportadorCurso from './components/Importador/ImportadorCurso';
 import ImportadorDisciplinas from './components/Importador/ImportadorDisciplinas';
 import ImportadorProfessores from './components/Importador/ImportadorUsuarios';
+require('dotenv').config();
 
 function App() {
   const [userData, setUserData] = useState(null);
+
+  const baseNAME = process.env.REACT_APP_BASE_NAME;
   
   const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props =>userData ? (<Component {...props} /> ): ( <Redirect to={{ pathname: "/login", state: { from: props.location } }} />)}
     />
   );
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={baseNAME}>
       {userData && <SACENavbar setUserData={setUserData} user={userData} />}
       <div className="container">
         <Switch>
@@ -52,6 +56,7 @@ function App() {
           <PrivateRoute exact path="/nova-requisicao" component={()=><NovaRequisicao user={userData}/>} />
           <PrivateRoute exact path="/cadastrar-disciplina" component={CadastrarDisciplinas} />
           <PrivateRoute exact path="/cadastro-servidor" component={CadastroPerfilServidor} />
+          <PrivateRoute exact path="/cadastro-professor" component={CadastroPerfilProfessor} />
           <PrivateRoute exact path="/cadastrar-curso" component={CadastroCurso} />
           <PrivateRoute exact path="/parecer/:id" component={Parecer} />
           <PrivateRoute exact path="/listar-curso" component={ListaCursos} />

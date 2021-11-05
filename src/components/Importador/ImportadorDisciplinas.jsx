@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Alert } from 'react-bootstrap';
+import { baseURL } from '../../enviroment';
 import axios from 'axios';
 
 
@@ -16,7 +17,7 @@ class ImportadorDisciplinas extends Component {
         const config = { headers: { 'Content-Type': 'multipart/form-data' } };
         const form = new FormData();
         form.append("umArquivo", this.state.umArquivo);
-        axios.post("http://localhost:8080/api/anexos/disciplinas", form, config).then(() => {
+        axios.post(`${baseURL}/anexos/disciplinas`, form, config).then(() => {
             this.setState({ showAlert: true })
         })
         setTimeout(() => {
